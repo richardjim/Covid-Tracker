@@ -2,7 +2,7 @@
     <div v-if="!loading">
         <DataTitle :text="title" :dataDate="dataDate" />
         <DataBoxes :stats="stats" />
-        <CountrySelect @get-country="getCountryData()" :countries="countries" />
+        <CountrySelect @get-country="getCountryData" :countries="countries" />
     </div>
     <div class="flex flex-col align-center justify-center text-center" v-else>
         <div class="text-gray-500 text-3xl mt-10 mb-6">
