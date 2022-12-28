@@ -12,7 +12,7 @@ export default {
     props: {
         text: {
             type: String,
-            default: 'Default Title'
+            default: ''
         },
         dataDate: {
             type: String,
