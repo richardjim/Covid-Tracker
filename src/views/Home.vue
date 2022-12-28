@@ -1,8 +1,11 @@
 <template>
-    <div v-if="!loading">
+    <div class="m-8" v-if="!loading">
         <DataTitle :text="title" :dataDate="dataDate" />
         <DataBoxes :stats="stats" />
         <CountrySelect @get-country="getCountryData" :countries="countries" />
+        <button @click="clearCountryData()"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-10 py-3 px-4 rounded-lg">Clear
+            Country</button>
     </div>
     <div class="flex flex-col align-center justify-center text-center" v-else>
         <div class="text-gray-500 text-3xl mt-10 mb-6">
@@ -42,6 +45,13 @@ export default {
         getCountryData(country) {
             this.stats = country;
             this.title = country.Country;
+        },
+        async clearCountryData() {
+            this.loading = true;
+            const data = await this.getCovidData();
+            this.stats = data.Global;
+            this.title = 'Global';
+            this.loading = false;
         }
     },
     async created() {
